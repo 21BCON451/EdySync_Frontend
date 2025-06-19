@@ -4,7 +4,9 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
 trigger:
-- main
+  branches:
+    include:
+      - main
 
 pool:
   vmImage: 'ubuntu-latest'
@@ -21,7 +23,10 @@ steps:
 - script: npm run build
   displayName: 'Build React app'
 
-- task: PublishBuildArtifacts@1
+- task: AzureStaticWebApp@0
   inputs:
-    PathtoPublish: 'build'
-    ArtifactName: 'drop'
+    app_location: '.'
+    api_location: ''
+    output_location: 'build'
+    azure_static_web_apps_api_token: $(deployment_token)
+
