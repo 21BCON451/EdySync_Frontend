@@ -16,7 +16,7 @@ function TakeAssessmentPage() {
   useEffect(() => {
     async function fetchAssessment() {
       try {
-        const res = await axios.get(`https://localhost:7156/api/Assessments/${id}`);
+        const res = await axios.get(`https://edusyncwebapi20250619155635-dtdshzeucsa8hca9.centralindia-01.azurewebsites.net/api/Assessments/${id}`);
         const data = res.data;
         const parsed = JSON.parse(data.questions);
         setAssessment(data);
@@ -52,7 +52,7 @@ function TakeAssessmentPage() {
 
     // Optional: Save result to backend
     try {
-      await axios.post('https://localhost:7156/api/Results', {
+      await axios.post('https://edusyncwebapi20250619155635-dtdshzeucsa8hca9.centralindia-01.azurewebsites.net/api/Results', {
         assessmentId: assessment.assessmentId,
         userId: localStorage.getItem('userId'), // Replace this with actual logged-in user ID
         score: calculatedScore,

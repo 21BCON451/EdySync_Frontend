@@ -14,7 +14,7 @@ const CreateAssessmentPage = () => {
    
     const fetchCourses = async () => {
       try {
-        const response = await fetch("https://localhost:7262/api/Course");
+        const response = await fetch("https://edusyncwebapi20250619155635-dtdshzeucsa8hca9.centralindia-01.azurewebsites.net/api/Course");
         const data = await response.json();
         setCourses(data);
       } catch (error) {
